@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HydroWeb Jasaan | Dashboard</title>
+  <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../homepage/homepage.css">
+
+  <script src="../logout/logout.js" defer></script>
+  <script src="../homepage/user.js" defer></script>
+</head>
+<body>
+
+  <div class="admin-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="../assets/logo.png" alt="HydroWeb Jasaan Logo">
+      </div>
+
+      <nav class="nav">
+        <a href="../homepage/homepage.html"><i>🏠</i> Dashboard</a>
+        <a href="../homepage/sales.html" ><i>📊</i> Sales Management</a>
+        <a href="../homepage/inventory.html"><i>📦</i> Inventory Management</a>
+        <a href="../homepage/delivery.html"><i>🚚</i> Delivery Management</a>
+        <a href="" class="active"><i>🏷️</i>Price Management</a>
+        <a href="../homepage/history.html"><i>📜</i> History</a>
+        <a href="../homepage/report.html"><i>📈</i>Sales Report</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Header -->
+      <header class="header-banner">
+        <h2 id="welcomeText">Welcome to HydroWeb Jasaan!</h2>
+        <a class="user-icon">👤</a>
+        <div id="user-menu" class="hidden">
+          <button class="menu-button" onclick="window.location.href='../homepage/details.html'">Personal Details</button>
+          <button class="menu-button" onclick="window.location.href='#'">Settings</button>
+          <button class="menu-button" onclick="logoutUser()">Log Out</button>
+        </div>
+      </header>
+
+        <section class="sdashboard-cards">
+
+        <!-- Water Type Card -->
+        <div class="scard blue" id="watertype">
+          <div class="card-icon">💧</div>
+          <h3>Water Type</h3>
+        </div>
+
+         <!-- Gallon Type Card -->
+        <div class="scard green" id="containertype">
+          <div class="card-icon">🧴</div>
+          <h3>Container Type</h3>
+        </div>
+
+          <!-- Delivery Card -->
+        <div class="scard yellow" id="deliveryprice">
+          <div class="card-icon">🚚</div>
+          <h3>Delivery Price</h3>
+        </div>
+
+        <!-- Other Items Card -->
+        <div class="scard purple" id="othersprice">
+          <div class="card-icon">🧰</div>
+          <h3>Other Items</h3>
+        </div>
+
+      </section>
+    </main>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Request Delivery | HydroWeb Jasaan</title>
+<link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script src="../customerspage/reqDelivery.js" defer></script>
+<style>
+:root {
+  --blue-dark: #005b8f;
+  --blue-mid: #0077a3;
+  --text-dark: #053b5e;
+}
+
+/* General Styles */
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
+body { background: linear-gradient(180deg, #e8f3f9, #f4fbff); min-height:100vh; }
+
+/* Topbar */
+.topbar {
+  background-color: var(--blue-dark);
+  color:white;
+  padding:15px 30px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:100px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.2);
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:1000;
+}
+.back-btn { position:absolute; left:30px; background:none; border:none; color:white; font-size:26px; cursor:pointer; }
+.back-btn:hover { color:#b3e8ff; }
+.header-title h1 { font-size:32px; font-weight:700; background:linear-gradient(90deg,#77d4f7,#d0eef7,#3a90f9); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+
+/* Container */
+.container {
+  max-width:900px;
+  margin:140px auto 60px;
+  background: rgba(255,255,255,0.85);
+  padding:35px;
+  border-radius:16px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.08);
+  backdrop-filter:blur(4px);
+}
+
+h2 { text-align:center; margin-bottom:25px; color: var(--blue-dark); font-weight:700; }
+
+/* Form */
+.order-form { display:flex; flex-wrap:wrap; gap:20px; justify-content:space-between; align-items:flex-end; }
+.form-group { flex:1 1 250px; display:flex; flex-direction:column; }
+label { font-weight:600; margin-bottom:5px; color: var(--text-dark); }
+select,input { padding:10px; border:1px solid #ccd9e2; border-radius:8px; transition:all 0.2s ease; }
+select:focus,input:focus { border-color:var(--blue-mid); outline:none; box-shadow:0 0 5px rgba(0,123,255,0.2); }
+
+/* Buttons */
+.btn {
+  background: linear-gradient(90deg, #0077a3, #00b4db);
+  color:white;
+  padding:12px 22px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:600;
+  text-align:center;
+  transition:0.3s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+.btn:hover::before { left:100%; }
+.btn::before {
+  content:"";
+  position:absolute;
+  top:0; left:-100%;
+  width:100%; height:100%;
+  background: linear-gradient(90deg, rgba(255,255,255,0.2), rgba(255,255,255,0.5), rgba(255,255,255,0.2));
+  transition: all 0.5s ease;
+}
+.btn-success { background: linear-gradient(90deg, #28a745, #3dd56a); }
+
+/* Table */
+table { width:100%; border-collapse:collapse; margin-top:40px; border-radius:10px; overflow:hidden; }
+table th, table td { border:1px solid #e0e6eb; text-align:center; padding:10px; }
+table th { background: linear-gradient(90deg, #005b8f,#39a5d7); color:white; font-weight:600; }
+table tbody tr:nth-child(even) { background-color:#f7fafc; }
+.remove-btn { background:#dc3545; color:white; border:none; padding:6px 12px; border-radius:6px; cursor:pointer; font-size:14px; }
+.remove-btn:hover { background:#b02a37; }
+.grand-total-box { margin-top:25px; text-align:right; background: rgba(0, 119, 163, 0.05); border-radius:10px; padding:15px 20px; font-size:1.3rem; font-weight:700; color:var(--blue-dark); }
+
+/* Modal */
+.modal-overlay {
+  position:fixed; top:0; left:0; width:100%; height:100%;
+  background:rgba(0,0,0,0.35); display:flex; align-items:center; justify-content:center; z-index:2000; backdrop-filter: blur(4px);
+}
+.modal {
+  width:440px; background:rgba(255,255,255,0.9);
+  border-radius:16px; box-shadow:0 8px 25px rgba(0,0,0,0.15);
+  position: relative; animation: fadeIn 0.3s ease;
+  border:1px solid rgba(255,255,255,0.5);
+}
+
+/* Inner content with padding */
+.modal-inner { padding:30px; }
+
+.modal-header h3 {
+  margin-bottom:15px;
+  color:var(--blue-dark);
+  font-weight:700;
+  font-size:18px;
+  text-align:center;
+}
+
+/* ✅ Medium Square Close Button - Top Right */
+#closeModal {
+  position: absolute;
+  top: 8px;          
+  right: 8px;        /* moved to top-right */
+  width: 35px;       
+  height: 35px;      
+  background: #ccc;
+  color: #333;
+  border: none;
+  border-radius: 6px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+#closeModal:hover {
+  background: #0077a3;
+  color: white;
+  transform: scale(1.1);
+}
+
+
+
+.modal input {
+  width:100%; margin-bottom:15px; padding:10px;
+  border-radius:10px; border:1px solid #ccd9e2; font-size:15px;
+}
+.modal input:focus { border-color: var(--blue-mid); box-shadow:0 0 5px rgba(0,123,255,0.2); }
+.modal button { width:100%; margin-top:5px; background:linear-gradient(90deg,#0077a3,#00b4db); color:white; padding:12px; font-weight:600; border:none; border-radius:10px; cursor:pointer; }
+.modal button:hover { opacity:0.9; }
+
+.success-box { text-align:center; padding:30px; border-radius:16px; background: rgba(255,255,255,0.4); backdrop-filter: blur(10px); border:1px solid rgba(255,255,255,0.3); }
+.success-box i { font-size:60px; color:#28a745; margin-bottom:10px; }
+
+@keyframes fadeIn { from { opacity:0; transform:translateY(-10px); } to { opacity:1; transform:translateY(0); } }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <button class="back-btn" id="backBtn">
+    <i class="fa-solid fa-arrow-left"></i>
+  </button>
+
+  <div class="header-title"><h1>HydroWeb Jasaan</h1></div>
+</header>
+
+<div class="container">
+  <h2>Make a Sale - Request Delivery</h2>
+
+  <div class="order-form">
+    <div class="form-group">
+      <label for="productType">Product Type:</label>
+      <select id="productType">
+        <option value="">Select Product</option>
+        <option value="Water">Water</option>
+        <option value="Container">Container</option>
+        <option value="Items">Other Items</option>
+      </select>
+    </div>
+
+    <div id="dynamicSection" style="display:none; flex: 1 1 100%; gap: 20px; flex-wrap: wrap;">
+      <div class="form-group" id="subOptionGroup"></div>
+      <div class="form-group">
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" min="1" value="1">
+      </div>
+      <button id="addItemBtn" class="btn btn-success">Add to Receipt</button>
+    </div>
+  </div>
+
+  <table id="receiptTable">
+    <thead>
+      <tr><th>Product</th><th>Details</th><th>Quantity</th><th>Price</th><th>Total</th><th>Action</th></tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <div class="grand-total-box">
+    Grand Total: <span id="grandTotal">₱0</span>
+  </div>
+
+  <button id="confirmBtn" class="btn" style="margin-top:25px;">Confirm Order</button>
+</div>
+
+<div id="deliveryModal" class="modal-overlay" style="display:none;">
+  <div class="modal" id="modalContent">
+    <button class="close-modal" id="closeModal">&times;</button>
+    <div class="modal-inner">
+      <div class="modal-header">
+        <h3>Delivery Information</h3>
+      </div>
+
+      <!-- Choice Section -->
+      <div id="addressChoice">
+        <p>Please choose your delivery option:</p>
+        <button id="useCurrentAddressBtn" class="btn">Use Current Address</button>
+        <button id="inputNewAddressBtn" class="btn">Enter New Address</button>
+      </div>
+
+      <!-- Input Form (hidden initially) -->
+      <div id="deliveryForm" style="display:none; margin-top: 15px;">
+        <input type="text" id="address" placeholder="Delivery Address" />
+        <button id="submitDeliveryBtn">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+
+</script>
+</body>
+</html>

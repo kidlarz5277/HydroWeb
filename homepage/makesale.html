@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Walk-In</title>
+  <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../homepage/sales.css" />
+  <script src="../homepage/sales.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <a href="../homepage/sales.html" class="back-arrow">←</a>
+      <h1>Walk-In Sales</h1>
+    </header>
+
+    <!-- 🟦 Category Tabs -->
+    <div class="main">
+      <div class="tabs" role="tablist" aria-label="Product categories">
+        <div class="tab active" data-tab="water">Water</div>
+        <div class="tab" data-tab="container">Container</div>
+        <div class="tab" data-tab="other">Other Items</div>
+      </div>
+    </div>
+
+    <!-- Product Cards -->
+    <section id="product-list" class="product-list">
+      <!-- Product cards will be loaded here dynamically -->
+    </section>
+
+    <!-- Selected Items Table -->
+    <section class="cart-section">
+      <h2>Selected Products</h2>
+      <table id="cart-table">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Unit Price</th>
+            <th>Total</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+      <div class="cart-footer">
+        <strong>Total Amount: ₱<span id="grand-total">0.00</span></strong>
+        <button id="confirm-sale" class="confirm-btn">Confirm Sale</button>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

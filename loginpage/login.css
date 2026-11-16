@@ -1,0 +1,168 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: url('../assets/login_bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Login container */
+.login-container {
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  max-width: 360px;
+  width: 100%;
+}
+
+/* Logo styling */
+.logo {
+  display: block;
+  margin: 0 auto 8px auto; /* Reduced bottom margin */
+  max-width: 240px;
+  height: auto;
+}
+
+/* Form elements */
+.login-form input {
+  width: 100%;
+  padding: 12px;
+  margin: 4px 0; /* Reduced spacing between inputs */
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+/* Style only the first button (Log In) */
+.login-form button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  background-color: #0077b6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.login-form button[type="submit"]:hover {
+  background-color: #005f8e;
+}
+
+/* Style Create Account button separately */
+.create-account {
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  background-color: #00b618;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.create-account:hover {
+  background-color: #009e15;
+}
+
+
+/* Create Account button */
+
+/* Forgot password link */
+.forgot-password {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  color: #0077b6;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+/* Responsive tweaks */
+@media (max-width: 480px) {
+  .login-container {
+    padding: 30px 20px;
+    max-width: 90%;
+  }
+
+  .logo {
+    max-width: 140px;
+  }
+
+  .login-form input,
+  .login-form button,
+  .create-account {
+    font-size: 14px;
+  }
+}
+
+.account-type-container {
+      display: none;
+      text-align: center;
+      background: #fff;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      margin-top: 20px;
+    }
+
+    .account-type-container h2 {
+      margin-bottom: 20px;
+    }
+
+    .account-btn {
+      display: block;
+      margin: 10px auto;
+      padding: 12px 20px;
+      width: 80%;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s;
+    }
+
+    .customer-btn {
+      background-color: #2196f3;
+      color: white;
+    }
+    .customer-btn:hover {
+      background-color: #1976d2;
+    }
+
+    .business-btn {
+      background-color: #4caf50;
+      color: white;
+    }
+    .business-btn:hover {
+      background-color: #388e3c;
+    }
+
+    .back-btn {
+      margin-top: 20px;
+      background: none;
+      color: #333;
+      border: none;
+      text-decoration: underline;
+      cursor: pointer;
+    }

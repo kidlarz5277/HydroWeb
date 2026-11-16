@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Admin Users</title>
+  <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../adminpage/admin.css">
+  <script src="../adminpage/userManagement.js" defer></script>
+  <script src="../logout/logout.js" defer></script>
+</head>
+<body>
+
+  <div class="admin-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="../assets/logo.png" alt="HydroWeb Jasaan Logo">
+      </div>
+
+      <nav class="nav">
+        <a href="../adminpage/admin.html"><i>🏠</i> Dashboard</a>
+        <a href="#" class="active"><i>👥</i> Admin User Management</a>
+        <a href="../adminpage/prodManage.html"><i>📦</i>Product Management</a>
+        <a href="../adminpage/waterTypeManage.html"><i>💧</i> Water Type Management</a>
+        <a href="../adminpage/waterSizeManage.html"><i>🧪</i> Water Size Management</a>
+        <a href="../adminpage/viewFeedback.html"><i>💬</i>Feedback Management</a>
+        <a onclick="logoutUser()"><i>🚪</i> Logout</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="header-banner">
+        <h2>Welcome to HydroWeb Jasaan!</h2>
+      </header>
+
+        <section class="admin-table-section">
+
+            <table class="admin-table">
+                <thead>
+                <tr>
+                    <th>Shop Name</th>
+                    <th>Business Address</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+
+                <tbody id="usersTableBody">
+                <!-- Users will be loaded dynamically -->
+                </tbody>
+            </table>
+        </section>
+
+
+
+    </main>
+  </div>
+
+</body>
+</html>

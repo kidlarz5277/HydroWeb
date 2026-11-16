@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HydroWeb Jasaan | Delivered History</title>
+
+  <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../customerspage/notif.css">
+  <script src="../customerspage/user_icon.js" defer></script>
+  <script src="../customerspage/delivery.js" defer></script>
+  <script src="../customerspage/admin.js" defer></script>
+  <script src="../logout/logout.js" defer></script>
+
+  <style>
+    :root {
+      --blue-dark: #005b8f;
+      --blue-light: #c8f1ff;
+      --card-bg: #053b5e;
+      --delete-red: #ff5f5f;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      display: flex;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0e87c9, #0077A3, #b5e8fa);
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 220px;
+      height: 100vh;
+      background-color: var(--blue-light);
+      padding-top: 20px;
+      overflow-y: auto;
+      z-index: 1000;
+    }
+
+    .sidebar img {
+      height: 100px;
+      display: block;
+      margin: auto;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 15px 20px;
+      color: #000;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .sidebar a:hover,
+    .sidebar a.active {
+      background-color: var(--blue-dark);
+      color: #fff;
+    }
+
+    /* Topbar */
+    .topbar {
+      background-color: var(--blue-dark);
+      color: #fff;
+      padding: 10px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 120px;
+      gap: 12px;
+      position: fixed;
+      top: 0;
+      left: 220px;
+      right: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .header-title h1 {
+      font-size: 30px;
+      font-weight: 700;
+      display: inline-block;
+      background: linear-gradient(90deg, #77d4f7, #d0eef7, #2678db);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .header-title h1 span {
+      color: #fff;
+    }
+
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      position: relative;
+    }
+
+    .topbar-right i {
+      font-size: 22px;
+      background-color: #0077b6;
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: 0.3s;
+      color: white;
+    }
+
+    .topbar-right i:hover {
+      background-color: #0096c7;
+    }
+
+    /* Dropdown */
+    .dropdown {
+      position: absolute;
+      top: 70px;
+      right: 25px;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      width: 220px;
+      overflow: hidden;
+      display: none;
+      flex-direction: column;
+      z-index: 100;
+      border: 1px solid #e5e5e5;
+      transition: all 0.25s ease;
+    }
+
+    .dropdown a {
+      padding: 12px 18px;
+      text-decoration: none;
+      color: #222;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .dropdown a i {
+      font-size: 18px;
+      color: #333;
+      background: none;
+      border: none;
+      padding: 0;
+      width: 22px;
+      text-align: center;
+    }
+
+    .dropdown a:hover {
+      background-color: #f3fbff;
+      color: var(--blue-dark);
+    }
+
+    .dropdown a:hover i {
+      color: var(--blue-dark);
+    }
+
+    .dropdown .logout:hover {
+      background-color: #fdecea;
+      color: #c62828;
+    }
+
+    .dropdown .divider {
+      height: 1px;
+      background-color: #eaeaea;
+      margin: 4px 0;
+    }
+
+    /* Main Content */
+    .main-content {
+      flex-grow: 1;
+      margin-left: 220px;
+      margin-top: 120px;
+      padding: 30px;
+      color: white;
+    }
+
+    .main-content h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 26px;
+      font-weight: 700;
+    }
+
+    /* Delivery Cards */
+    .delivery-container {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .delivery-card {
+      display: flex;
+      flex-direction: column;
+      background-color: rgba(5, 59, 94, 0.9);
+      border-radius: 15px;
+      padding: 20px 25px;
+      width: 87%;
+      margin: auto;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .delivery-card:hover {
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25),
+                  0 0 15px rgba(0, 119, 182, 0.4);
+    }
+
+    .delivery-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .delivery-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .delivery-left img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background-color: #0077b6;
+      padding: 5px;
+    }
+
+    .delivery-info h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .delivery-info p {
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    /* Toggle Receipt Button */
+    .toggle-receipt-btn {
+      background: none;
+      border: 1px solid #b3e8ff;
+      color: #b3e8ff;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      cursor: pointer;
+      margin-top: 5px;
+      transition: 0.3s;
+    }
+
+    .toggle-receipt-btn:hover {
+      background: #b3e8ff;
+      color: var(--blue-dark);
+    }
+
+    /* Mini Receipt */
+    .mini-receipt {
+      background: rgba(255, 255, 255, 0.1);
+      margin-top: 15px;
+      border-radius: 10px;
+      padding: 10px;
+      display: none;
+    }
+
+    .mini-receipt table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .mini-receipt th,
+    .mini-receipt td {
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      text-align: left;
+      padding: 5px 8px;
+      font-size: 13px;
+    }
+
+    .mini-receipt th {
+      color: #b3e8ff;
+    }
+
+    .mini-receipt td {
+      color: #fff;
+    }
+
+    /* Scrollbar */
+    .delivery-container::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    .delivery-container::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 5px;
+    }
+
+    .delivery-container::-webkit-scrollbar-thumb {
+      background-color: #005b8f;
+      border-radius: 5px;
+      border: 2px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .delivery-container::-webkit-scrollbar-thumb:hover {
+      background-color: #2678db;
+    }
+
+    .delivery-container {
+      scrollbar-width: thin;
+      scrollbar-color: #005b8f rgba(255, 255, 255, 0.1);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo">
+      <img src="../assets/logo.png" alt="HydroWeb Logo">
+    </div>
+    <a href="../customerspage/index.html">Dashboard</a>
+    <a href="../customerspage/RequestDelivery.html">Request Delivery</a>
+    <a href="#" class="active">Delivered History</a>
+  </div>
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="header-title">
+      <h1>Welcome, <span id="customerName">HydroWeb Jasaan</span></h1>
+    </div>
+
+    <div class="topbar-right">
+
+      <!-- Notification Bell -->
+      <div id="notifBell">
+        <i class="fa-solid fa-bell"></i>
+        <span id="notifCount">0</span>
+      </div>
+
+      <div class="dropdown" id="notifDropdown">
+        <div id="notifList"></div>
+      </div>
+
+      <!-- User Icon -->
+      <i class="fa-solid fa-user" id="userIcon"></i>
+
+      <div class="dropdown" id="userDropdown">
+        <a href="PersonalDetails.html">
+          <i class="fa-solid fa-user"></i>
+          <span>Personal Details</span>
+        </a>
+
+        <a href="../customerspage/settings.html">
+          <i class="fa-solid fa-gear"></i>
+          <span>Settings</span>
+        </a>
+
+        <div class="divider"></div>
+
+        <a onclick="logoutUser()" class="logout">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span>Logout</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delivered History -->
+  <div class="main-content">
+    <h2>Delivered History</h2>
+
+    <div class="delivery-container">
+
+      <!-- Delivery Card 1 -->
+      <div class="delivery-card">
+        <div class="delivery-top">
+          <div class="delivery-left">
+            <img src="../assets/business_logo.jpg" alt="Aquaquin Station">
+            <div class="delivery-info">
+              <h3>Aquaquin Water Refilling Station</h3>
+              <p><b>Quantity:</b> 5 Gallons</p>
+              <p><b>Contact No.:</b> 09057018493</p>
+              <p><b>Delivered Date:</b> 10-22-2025</p>
+            </div>
+          </div>
+
+          <div>
+            <button class="toggle-receipt-btn">View Receipt</button>
+          </div>
+        </div>
+
+        <div class="mini-receipt">
+          <table>
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Qty</th>
+                <th>Price</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Purified Water</td>
+                <td>5</td>
+                <td>₱25</td>
+                <td>₱125</td>
+              </tr>
+              <tr>
+                <td>10L Container</td>
+                <td>2</td>
+                <td>₱85</td>
+                <td>₱170</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p style="text-align:right; font-weight:600;">Grand Total: ₱295</p>
+        </div>
+      </div>
+
+      <!-- Delivery Card 2 -->
+      <div class="delivery-card">
+        <div class="delivery-top">
+          <div class="delivery-left">
+            <img src="../assets/business_logo.jpg" alt="Rain Quarts">
+            <div class="delivery-info">
+              <h3>Rain Quarts</h3>
+              <p><b>Quantity:</b> 5 Gallons</p>
+              <p><b>Contact No.:</b> 09057018493</p>
+              <p><b>Delivered Date:</b> 10-22-2025</p>
+            </div>
+          </div>
+
+          <div>
+            <button class="toggle-receipt-btn">View Receipt</button>
+          </div>
+        </div>
+
+        <div class="mini-receipt">
+          <table>
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Qty</th>
+                <th>Price</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Purified Water</td>
+                <td>5</td>
+                <td>₱25</td>
+                <td>₱125</td>
+              </tr>
+              <tr>
+                <td>10L Container</td>
+                <td>2</td>
+                <td>₱85</td>
+                <td>₱170</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p style="text-align:right; font-weight:600;">Grand Total: ₱295</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

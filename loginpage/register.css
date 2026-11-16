@@ -1,0 +1,130 @@
+/* ====== HydroWeb Register Page ====== */
+
+/* --- Base Reset --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* --- Page Background --- */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: url('../assets/login_bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 30px; /* Extra space at top to ensure logo visibility */
+}
+
+/* --- Glass Form Container --- */
+.register-container {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  padding: 60px 50px 40px 50px; /* More top padding to fit logo */
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+  width: 360px;
+  text-align: center;
+  position: relative;
+}
+
+/* --- Logo --- */
+.logo {
+  width: 160px; /* Slightly larger and always visible */
+  display: block;
+  margin: 0 auto 25px auto;
+  object-fit: contain; /* Prevent cropping */
+}
+
+/* --- Page Title --- */
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* --- Input Fields --- */
+.register-form input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  outline: none;
+}
+
+.register-form input::placeholder {
+  color: #555;
+}
+
+/* --- Password Toggle Icon --- */
+.password-container {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* --- Sign Up Button --- */
+.signup-btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: 500;
+}
+
+.signup-btn:hover {
+  background-color: #005ecb;
+}
+
+/* --- Login Link --- */
+.login-link {
+  display: block;
+  margin-top: 15px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.login-link:hover {
+  text-decoration: underline;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 480px) {
+  .register-container {
+    width: 90%;
+    padding: 50px 20px 30px 20px;
+  }
+
+  .logo {
+    width: 120px;
+    margin-bottom: 20px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+}

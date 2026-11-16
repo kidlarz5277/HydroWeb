@@ -1,0 +1,130 @@
+/* Notifications Dropdown Items */
+.notification-item {
+  padding: 10px 15px;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.notification-item.unread {
+  background-color: #f0f8ff; /* light blue for unread */
+  font-weight: 600;
+}
+
+.notification-item:hover {
+  background-color: #e6f4ff;
+}
+
+.notification-item .notif-message {
+  font-size: 14px;
+  color: #222;
+}
+
+.notification-item .notif-time {
+  font-size: 11px;
+  color: #888;
+  margin-top: 2px;
+}
+
+/* Notification Bell Container */
+#notifBell {
+  position: relative; /* reference point for dropdown */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;           /* same as user icon */
+  background-color: #0077b6; /* same as user icon */
+  padding: 10px;             /* same as user icon */
+  border-radius: 50%;         /* circular */
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#notifBell:hover {
+  background-color: #0096c7; /* hover same as user icon */
+}
+
+/* Bell Icon inside the container */
+#notifBell i {
+  color: white; /* match user icon color */
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Notification Count Badge */
+#notifCount {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: red;
+  color: white;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 50%;
+  display: none; /* hidden when 0 */
+  text-align: center;
+  line-height: 1;
+  min-width: 16px;
+  height: 16px;
+}
+
+#notifList p {
+  color: black;
+  padding: 10px;
+  margin: 0;
+}
+
+/* Notification Dropdown */
+#notifDropdown {
+    position: absolute;      /* relative to bell */
+    top: 70px;               /* match user dropdown */
+    right: 25px;             /* match user dropdown */
+    width: 220px;            /* match user dropdown width */
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    max-height: 300px;       /* enables vertical scroll */
+    overflow-y: auto;
+    display: none;
+    flex-direction: column;
+    z-index: 100;
+    border: 1px solid #e5e5e5;
+    transition: all 0.25s ease; /* match user dropdown transition */
+}
+
+/* Optional small arrow pointing to bell */
+#notifDropdown::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    right: 15px;            /* arrow positioned near bell */
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+}
+
+/* Scrollbar Styling - Firefox */
+#notifDropdown {
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+}
+
+/* Scrollbar Styling - Webkit browsers (Chrome, Edge, Safari) */
+#notifDropdown::-webkit-scrollbar {
+    width: 6px;
+}
+
+#notifDropdown::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 3px;
+}
+
+#notifDropdown::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}

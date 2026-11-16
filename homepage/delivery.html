@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HydroWeb Jasaan | Delivery</title>
+  <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../homepage/homepage.css">
+  <script src="../homepage/user.js" defer></script>
+  <script src="../logout/logout.js" defer></script>
+  <script src="../homepage/delivery_sale.js" defer></script>
+</head>
+<body>
+
+  <div class="admin-container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="../assets/logo.png" alt="HydroWeb Jasaan Logo">
+      </div>
+
+      <nav class="nav">
+        <a href="../homepage/homepage.html"><i>🏠</i> Dashboard</a>
+        <a href="../homepage/sales.html"><i>📊</i> Sales Management</a>
+        <a href="../homepage/inventory.html" ><i>📦</i> Inventory Management</a>
+        <a href="#" class="active"><i>🚚</i> Delivery Management</a>
+        <a href="../homepage/price.html"><i>🏷️</i> Price Management</a>
+        <a href="../homepage/history.html"><i>📜</i> History</a>
+        <a href="../homepage/report.html"><i>📈</i>Sales Report</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+      <!-- Header -->
+      <header class="header-banner">
+        <h2 id="welcomeText">Welcome to HydroWeb Jasaan!</h2>
+        <a class="user-icon">👤</a>
+        <div id="user-menu" class="hidden">
+          <button class="menu-button" onclick="window.location.href='../homepage/details.html'">Personal Details</button>
+          <button class="menu-button" onclick="window.location.href='#'">Settings</button>
+          <button class="menu-button" onclick="logoutUser()">Log Out</button>
+        </div>
+      </header>
+
+      <!-- Dashboard Cards -->
+      <section class="sdashboard-cards">
+
+        <!-- Delivery Status Cards -->
+        <!-- To Confirm -->
+        <div class="scard blue" id="delivery-confirm">
+          <div class="card-icon">📋</div>
+          <h3>To Confirm</h3>
+        </div>
+
+        <!-- Pending -->
+        <div class="scard orange" id="delivery-pending">
+          <div class="card-icon">⏳</div>
+          <h3>Pending</h3>
+        </div>
+
+        <!-- Delivered -->
+        <div class="scard green" id="delivery-delivered">
+          <div class="card-icon">🚚</div>
+          <h3>Delivered</h3>
+        </div>
+
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Delivery Details Modal -->
+  <div class="deliveryModal" id="deliveryModal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Delivery Details</h2>
+      <div class="modal-body"></div>
+    </div>
+  </div>
+
+</body>
+</html>

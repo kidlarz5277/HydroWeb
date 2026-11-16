@@ -1,0 +1,1353 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  height: 100vh;
+  
+}
+
+/* Container Layout */
+.admin-container {
+  display: flex;
+  width: 100%;
+}
+
+/* Sidebar */
+.sidebar { 
+  width: 250px;
+  background-color: #c8f1ff;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+  height: 100vh;              /* ✅ Full height */
+  position: fixed;            /* ✅ Stays fixed on screen */
+  top: 0;
+  left: 0;
+  overflow-y: auto;           /* ✅ Scrolls internally if sidebar content is long */
+  border-right: 1px solid #ddd; /* Optional: subtle border for separation */
+}
+
+
+.logo {
+  text-align: center;
+  margin-bottom: 3px;
+}
+
+.logo img {
+  width: 180px;
+  height: 110px;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #000000;
+  padding: 12px 25px;
+  display: flex;
+  align-items: center;
+  transition: 0.3s;
+  font-size: 15px;
+}
+
+.nav a i {
+  margin-right: 10px;
+}
+
+.nav a:hover, .nav a.active {
+  background-color: #005b8f   ;
+  color: #fff;
+}
+
+/* Main Content */
+.main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  margin-left: 250px; /* offset for sidebar */
+  height: 100vh;
+  overflow-y: auto;
+
+  /* Gradient background */
+  background: linear-gradient(135deg, #0e87c9, #0077A3, #b5e8fa);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+/* Header Banner */
+.header-banner {
+  background-color: #005b8f;
+  
+  color: #b3e8ff;
+  padding: 36px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2rem;
+  position: sticky;   /* ✅ Make it stick to top */
+  top: 0;             /* ✅ Fixes it at top of viewport */
+  z-index: 10;        /* ✅ Keeps it above other elements */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Optional subtle shadow */
+}
+
+
+.user-icon {
+  background: #fff;
+  color: #00aaff;
+  border-radius: 50%;
+  width: 65px;
+  height: 65px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+#user-menu {
+  position: absolute;
+  top: 80px; /* adjust if needed to appear right below the user icon */
+  right: 40px; /* aligns better with your header padding */
+  background: white;
+  border: 2px solid #a4a1a1;
+  border-radius: 10px;
+  margin-top: 25px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: none; /* hidden by default */
+  flex-direction: column; /* ensures vertical alignment */
+  width: 200px;
+  padding: 10px;
+  z-index: 100; /* ensures it stays on top */
+}
+
+#user-menu.active {
+  display: flex; /* when shown, items align vertically */
+}
+
+/* Style each menu button */
+.menu-button {
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 10px 15px;
+  font-size: 14px;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.2s ease;
+}
+
+.menu-button:hover {
+  background-color: #87ceeb;
+}
+
+/* Dashboard Cards Layout */
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  padding: 40px;
+  background-color: #ffffff;
+
+  background: linear-gradient(135deg, #0e87c9, #0077A3, #b5e8fa);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.card {
+  border-radius: 12px;
+  color: black;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.card {
+  cursor: pointer;
+}
+
+/* Card Colors */
+.blue {
+  background-color: #00bfff; /* Light Sky Blue */
+}
+
+.green {
+  background-color: #2ebf57; /* Green */
+}
+
+.yellow {
+  background-color: #f9e65b; /* Yellow */
+}
+
+.darkblue {
+  background-color: #007bff; /* Blue */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dashboard-cards {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .sidebar {
+
+    width: 200px;
+  }
+}
+.content-section {
+  padding: 40px;
+}
+
+.content-section h3 {
+  color: #003366;
+  font-size: 1.4rem;
+  margin-bottom: 25px;
+}
+
+/* Cards */
+.hcard-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.hcard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 25px;
+  border-radius: 10px;
+  color: #000;
+  font-weight: 600;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.hcard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.hcard-content {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.ic{
+  font-size: 40px;
+}
+
+.arrow {
+  font-size: 1.2rem;
+}
+
+.sdashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.scard {
+  background: white;
+  border-radius: 18px;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.scard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.scard-icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.scard h3 {
+  margin: 10px 0 5px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+    /* ======== Card Colors ======== */
+.scard.blue {
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  color: white;
+}
+
+.scard.green {
+  background: linear-gradient(135deg, #43e97b, #38f9d7);
+  color: white;
+}
+
+.scard.yellow {
+  background: linear-gradient(135deg, #f6d365, #fda085);
+  color: white;
+}
+
+/* Price Management Section Styles */
+
+.price-form-section {
+  padding: 20px;
+}
+
+.price-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.price-table th,
+.price-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.price-table th {
+  background: #0077cc;
+  color: white;
+}
+
+.price-input {
+  width: 80px;
+  padding: 4px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+}
+
+.edit-btn,
+.copy-btn,
+.delete-btn,
+.save-btn,
+.back-btn {
+  background: #0077cc;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 5px;
+  margin: 2px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.3s ease;
+}
+
+.edit-btn:hover,
+.copy-btn:hover,
+.delete-btn:hover,
+.save-btn:hover,
+.back-btn:hover {
+  background: #005fa3;
+}
+
+.back-btn {
+  float: right;
+}
+
+.save-btn {
+  display: block;
+  margin-top: 20px;
+  background: #0077cc;
+}
+
+.save-btn:hover {
+  background: #005fa3;
+}
+
+/* Optional responsive tweak */
+@media (max-width: 768px) {
+  .price-table {
+    font-size: 0.9rem;
+  }
+  .price-input {
+    width: 60px;
+  }
+}
+
+/* ============================
+🚚 Delivery Price Management
+============================ */
+.delivery-form-section {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin: 40px;
+}
+
+.delivery-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.delivery-table th,
+.delivery-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+.delivery-table th {
+  background: #0077cc;
+  color: white;
+  font-weight: 600;
+}
+
+.delivery-table input {
+  width: 95%;
+  padding: 6px 8px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease;
+}
+
+.delivery-table input:focus {
+  border-color: #0077cc;
+  outline: none;
+  box-shadow: 0 0 4px rgba(0, 119, 204, 0.2);
+}
+
+/* ============================
+🔘 Buttons (Uniform & Aligned)
+============================ */
+.delivery-buttons {
+  display: flex;
+  justify-content: flex-end; /* Align buttons to the right */
+  align-items: center;       /* Vertically align */
+  gap: 15px;                 /* Space between buttons */
+  margin-top: 25px;
+}
+
+/* Unified button styling */
+.add-btn,
+.dsave-btn,
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 20px; /* Same padding for all buttons */
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  min-width: 160px;   /* ✅ Same width for all buttons */
+  height: 45px;       /* ✅ Same height for all buttons */
+  text-align: center;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+/* ➕ Add Button */
+.add-btn {
+  background: #28a745;
+  color: white;
+}
+.add-btn:hover {
+  background: #1e7e34;
+  transform: translateY(-2px);
+}
+
+/* 💾 Save Button */
+.dsave-btn {
+  background: #0077cc;
+  color: white;
+}
+.dsave-btn:hover {
+  background: #005fa3;
+  transform: translateY(-2px);
+}
+
+/* ⬅ Back Button */
+.back-btn {
+  background: #6c757d;
+  color: white;
+}
+.back-btn:hover {
+  background: #5a6268;
+  transform: translateY(-2px);
+}
+
+/* ============================
+   💾 Saved Products & Delivery Styling
+============================ */
+
+/* Common container styling */
+#savedProductsDisplay,
+#savedDeliveryDisplay {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  margin-top: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Table Styling */
+.saved-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.saved-table th,
+.saved-table td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.saved-table th {
+  background-color: #f0f0f0;
+  font-weight: 600;
+}
+
+.saved-table tr:nth-child(even) {
+  background-color: #fcfcfc;
+}
+
+.saved-table tr:hover {
+  background-color: #e8f4fd;
+  transition: background-color 0.3s ease;
+}
+
+/* Section header */
+#savedProductsDisplay h3,
+#savedDeliveryDisplay h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Make sure tables are responsive */
+@media (max-width: 768px) {
+  .saved-table th,
+  .saved-table td {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+}
+
+/* ============================
+🟣 Purple Card (Other Items)
+============================ */
+.scard.purple {
+  background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+  color: white;
+}
+
+.scard.red {
+  background: linear-gradient(135deg, #f77062, #fe5196);
+  color: white;
+}
+.scard.orange { 
+  background: linear-gradient(135deg, #f6b365, #fda085);
+  color: white; 
+}
+
+/* Prevent text selection globally */
+body {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none;    /* Firefox */
+  -ms-user-select: none;     /* IE10+ */
+  user-select: none;         /* Standard */
+}
+
+/* Optional: Allow selection in input fields and textareas */
+input, textarea {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+/* Optional: Allow selection for specific sections, e.g., dashboard cards */
+.dashboard-cards,
+.sdashboard-cards,
+.hcard-container {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* If you want certain elements selectable (like tables for copy-paste) */
+.price-table, 
+.delivery-table,
+.saved-table {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+.delivery-table-container {
+  margin: auto;
+  width: 96%;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.delivery-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  min-width: 600px;
+}
+
+.delivery-table thead {
+  background-color: #007bff;
+  color: white;
+}
+
+.delivery-table th,
+.delivery-table td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.delivery-table tr:hover {
+  background-color: #f6f8fc;
+  transition: background 0.2s;
+}
+
+.btn-delivered {
+  background-color: #28a745;
+  border: none;
+  color: white;
+  padding: 7px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.btn-delivered:hover {
+  background-color: #218838;
+}
+
+.loading-text,
+.no-data,
+.error-text {
+  text-align: center;
+  padding: 1rem;
+  font-weight: 500;
+  color: #555;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Dynamic Sales Table */
+.sales-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.sales-header h3 {
+  color: #003366;
+  font-size: 1.4rem;
+}
+
+.sales-header #backBtn {
+  background: #6c757d;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.sales-header #backBtn:hover {
+  background: #5a6268;
+  transform: translateY(-2px);
+}
+
+.sales-table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.sales-table th,
+.sales-table td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.sales-table thead {
+  background-color: #00bfff; /* Light sky blue header */
+  color: white;
+  font-weight: 600;
+}
+
+.sales-table tr:hover {
+  background-color: #e6f7ff; /* subtle hover highlight */
+  transition: background 0.2s ease;
+}
+
+.viewBtn {
+  background-color: #0077cc; /* action button blue */
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.viewBtn:hover {
+  background-color: #005fa3;
+  transform: translateY(-1px);
+}
+/* ============================ */
+/* Toggle Switch Styles */
+/* ============================ */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 46px;
+  height: 24px;
+  margin-right: 8px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #ccc;
+  transition: 0.3s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px; 
+  width: 18px;
+  left: 3px; 
+  bottom: 3px;
+  background-color: white;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #4caf50;
+}
+
+input:checked + .slider:before {
+  transform: translateX(22px);
+}
+
+/* Rounded slider for better aesthetics */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* Label next to toggle */
+.status-label {
+  font-size: 0.9rem;
+  color: #333;
+  vertical-align: middle;
+}
+
+
+/* For Inventory */
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* Show modal */
+.modal-overlay:not(.hidden) {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fff;
+  width: 90%;
+  max-width: 600px;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+/* Modal Header */
+.modal-content h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  text-align: center;
+  color: #333;
+}
+
+/* Product Cards Container */
+.product-card-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Product Card */
+.product-card {
+  border: 1px solid #ccc;
+  padding: 30px 15px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 10px;
+}
+
+.product-card:hover {
+  background-color: #e0f7fa;
+  transform: translateY(-2px);
+}
+
+/* Category Titles */
+.category-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 1rem 0 0.5rem 0;
+  color: #00796b;
+}
+
+/* Close Button */
+.close-modal-btn {
+  display: block;
+  margin: 1.5rem auto 0 auto;
+  padding: 0.6rem 1.2rem;
+  background-color: #00796b;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s ease;
+}
+
+.close-modal-btn:hover {
+  background-color: #004d40;
+}
+
+.inventory-tables {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  display: grid;
+  gap: 2rem;
+}
+
+.table-container {
+  width: 96%;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  margin: 0 auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+thead {
+  background: #87ceeb;
+}
+
+th, td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* ================================
+   📜 History Table Styling
+   ================================ */
+
+/* Table Container */
+.history-section {
+  margin-top: 20px;
+  padding: 1.5rem;
+  background-color: #f9fafb;
+  min-height: 70vh;
+}
+
+/* Table Wrapper */
+.history-section .overflow-x-auto {
+  border-radius: 0.75rem;
+  background-color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Table Structure */
+.history-section table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "Inter", sans-serif;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+/* Header */
+.history-section thead {
+  background-color: #87ceeb;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-weight: 600;
+}
+
+.history-section th {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 2px solid #d1d5db;
+  color: #374151;
+}
+
+/* Table Body */
+.history-section td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Zebra striping */
+.history-section tbody tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+/* Hover Effect */
+.history-section tbody tr:hover {
+  background-color: #edf2ff;
+  transition: background-color 0.2s ease;
+}
+
+/* Empty State */
+.history-section td[colspan="5"] {
+  text-align: center;
+  font-style: italic;
+  color: #6b7280;
+}
+
+/* Highlight the active delivery card */
+.scard.active {
+  border: 3px solid #007BFF; /* Bright blue border */
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+  transform: translateY(-3px);
+  transition: all 0.2s ease;
+}
+
+/* Optional: smooth hover effect for all cards */
+.scard:hover {
+  cursor: pointer;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* =============================
+   Delivery Table Buttons
+============================= */
+.delivery-table button {
+  padding: 6px 12px;
+  margin: 2px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+}
+
+/* Details button */
+.delivery-table .btn-details {
+  background-color: #3498db; /* Blue */
+  color: #fff;
+}
+
+.delivery-table .btn-details:hover {
+  background-color: #2980b9;
+  transform: translateY(-1px);
+}
+
+/* Mark Delivered button */
+.delivery-table .btn-delivered {
+  background-color: #27ae60; /* Green */
+  color: #fff;
+}
+
+.delivery-table .btn-delivered:hover {
+  background-color: #1e8449;
+  transform: translateY(-1px);
+}
+
+/* Cancel button */
+.delivery-table .btn-cancel {
+  background-color: #e74c3c; /* Red */
+  color: #fff;
+}
+
+.delivery-table .btn-cancel:hover {
+  background-color: #c0392b;
+  transform: translateY(-1px);
+}
+
+/* Disabled button state */
+.delivery-table button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Modal styles */
+.deliveryModal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.deliveryModal .modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 600px;
+  max-height: 80%;
+  overflow-y: auto;
+}
+
+.deliveryModal .close {
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.deliveryModal table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+    
+.deliveryModal th, .deliveryModal td {
+  border: 1px solid #ddd; 
+  padding: 8px;
+  text-align: left;
+}
+
+.deliveryModal th {
+  background-color: #3498db;
+}
+
+/* ============================ */
+/* Details Button Styling */
+/* ============================ */
+.details-btn {
+  background-color: #3b82f6; /* Blue background */
+  color: #ffffff;            /* White text */
+  padding: 6px 12px;         /* Top/Bottom 6px, Left/Right 12px */
+  border: none;
+  border-radius: 6px;
+  font-size: 0.875rem;       /* Slightly smaller text */
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.details-btn:hover {
+  background-color: #2563eb; /* Darker blue on hover */
+  transform: translateY(-1px);
+}
+
+.details-btn:active {
+  background-color: #1d4ed8; /* Even darker blue when clicked */
+  transform: translateY(0);
+}
+
+.details-btn:focus {
+  outline: 2px solid #93c5fd; /* Light blue outline for accessibility */
+  outline-offset: 2px;
+}
+
+/* ============================
+   Sale History Modal Styling
+============================ */
+.saleHistory {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* Scroll if modal content exceeds viewport */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+  backdrop-filter: blur(2px); /* Optional blur behind modal */
+}
+
+/* Modal Content Box */
+.saleHistory .modal-content {
+  background-color: #fff;
+  margin: auto; /* Center horizontally, flexible top margin */
+  padding: 20px; /* Space between table and modal edges */
+  border-radius: 12px;
+  width: 90%;
+  max-width: 800px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  animation: slideDown 0.3s ease-out;
+  overflow-y: auto; /* Scroll if table is taller than modal */
+  box-sizing: border-box; /* Include padding in height calculation */
+}
+
+/* Slide-down animation */
+@keyframes slideDown {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Close Button Styling */
+.saleHistory .closeModal {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 8px 16px;
+  background-color: #2563EB; /* Blue-600 */
+  color: #fff;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.saleHistory .closeModal:hover {
+  background-color: #1E40AF; /* Blue-700 */
+}
+
+/* Table Styling inside Modal */
+.saleHistory table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  margin-bottom: 10px; /* Padding between table and modal edges */
+}
+
+.saleHistory th, .saleHistory td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.saleHistory th {
+  background-color: #F3F4F6; /* Gray-100 */
+  font-weight: 600;
+}
+
+/* ============================ */
+/* Delivery Details Button Styling */
+/* ============================ */
+.delivery-details-btn {
+  background-color: #3b82f6; /* Blue background */
+  color: #ffffff;            /* White text */
+  padding: 6px 12px;         /* Top/Bottom 6px, Left/Right 12px */
+  border: none;
+  border-radius: 6px;
+  font-size: 0.875rem;       /* Slightly smaller text */
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.delivery-details-btn:hover {
+  background-color: #2563eb; /* Darker blue on hover */
+  transform: translateY(-1px);
+}
+
+.delivery-details-btn:active {
+  background-color: #1d4ed8; /* Even darker blue when clicked */
+  transform: translateY(0);
+}
+
+.delivery-details-btn:focus {
+  outline: 2px solid #93c5fd; /* Light blue outline for accessibility */
+  outline-offset: 2px;
+}
+/* Style To Confirm button same as Mark Delivered */
+.btn-to-confirm {
+  background-color: #4CAF50; /* Green like delivered button */
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-to-confirm:hover {
+  background-color: #45a049; /* Slightly darker on hover */
+}
+
+.btn-to-confirm:disabled {
+  background-color: #a5d6a7; /* Lighter when disabled */
+  cursor: not-allowed;
+}
+
+/* ================================
+   📜 Sales Report Table Styling
+   ================================ */
+
+/* Table Container */
+#salesReportTable-container {
+  width: 96%;                 /* ✅ Table container width */
+  margin: 20px auto;          /* ✅ Center horizontally with top margin */
+  padding: 1.5rem;
+  background-color: #f9fafb;
+  min-height: 70vh;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Table Wrapper for horizontal scroll */
+#salesReportTable-container .overflow-x-auto {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 0.75rem;
+  background-color: white;
+}
+
+/* Table Structure */
+#salesReportTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "Inter", sans-serif;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+/* Header */
+#salesReportTable thead {
+  background-color: #87ceeb;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-weight: 600;
+}
+
+#salesReportTable th {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 2px solid #d1d5db;
+  color: #374151;
+}
+
+/* Table Body */
+#salesReportTable td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Zebra striping */
+#salesReportTable tbody tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+/* Hover Effect */
+#salesReportTable tbody tr:hover {
+  background-color: #edf2ff;
+  transition: background-color 0.2s ease;
+}
+
+/* Empty State */
+#salesReportTable td[colspan] {
+  text-align: center;
+  font-style: italic;
+  color: #6b7280;
+}
+
+/* Optional: responsive table wrapper */
+@media (max-width: 768px) {
+  #salesReportTable th,
+  #salesReportTable td {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.9rem;
+  }
+}

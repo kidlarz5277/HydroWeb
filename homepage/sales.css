@@ -1,0 +1,344 @@
+/* =========================
+   Reset and Base
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #a3b4b9;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  overflow-y: auto;
+  padding: 40px 0;
+}
+
+/* =========================
+   Container
+========================= */
+.container {
+  background-color: #ffffff;
+  width: 950px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* =========================
+   Header
+========================= */
+.header {
+  background-color: #29a8e0;
+  color: white;
+  text-align: center;
+  padding: 25px 0;
+  position: relative;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.back-arrow {
+  position: absolute;
+  left: 25px;
+  top: 20px;
+  font-size: 28px;
+  color: white;
+  text-decoration: none;
+}
+
+.back-arrow:hover {
+  color: #e0f4ff;
+}
+
+/* =========================
+   Category Tabs
+========================= */
+.tabs {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  margin: 0 25px;
+  margin-top: 30px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Inactive tab */
+.tab {
+  background-color: #8f8f8f;
+  color: white;
+  padding: 12px 40px;
+  border-radius: 12px 12px 0 0;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  user-select: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Active tab */
+.tab.active {
+  background-color: #80cfff;
+  color: #004b80;
+  box-shadow: none;
+  position: relative;
+  z-index: 3;
+}
+
+/* Hover effect for inactive tab */
+.tab:hover:not(.active) {
+  background-color: #6f6f6f;
+}
+
+/* =========================
+   Product List Section
+========================= */
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* exactly 3 cards per row */
+  gap: 20px; /* tighter spacing */
+  padding: 30px;
+  background-color: #80cfff;
+  border-radius: 0 12px 12px 12px;
+  margin: 0 25px 25px 25px;
+  justify-items: center; /* centers cards nicely */
+}
+
+/* =========================
+   Product Cards
+========================= */
+.card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 15px 10px; /* smaller padding */
+  width: 90%; /* controls card width within column */
+  text-align: center;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  transition: 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.card h3 {
+  font-size: 16px; /* smaller font */
+  color: #0077cc;
+  margin: 8px 0 4px;
+  font-weight: 600;
+}
+
+.card p {
+  font-size: 13px;
+  color: #333;
+  margin-bottom: 8px;
+  min-height: 36px;
+}
+
+.card .price {
+  font-size: 14px;
+  color: #0077cc;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.card button {
+  background-color: #1aa84f;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.card button:hover {
+  background-color: #159542;
+}
+
+/* Disabled / Out of stock state */
+.card.out-of-stock {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.card.out-of-stock button {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* =========================
+   Cart Section
+========================= */
+.cart-section {
+  background-color: #80cfff;
+  margin: 0 25px 30px 25px;
+  border-radius: 12px;
+  padding: 30px;
+}
+
+.cart-section h2 {
+  font-size: 24px;
+  color: #005fa3;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+/* Cart Table */
+#cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#cart-table th,
+#cart-table td {
+  border: 1px solid #ccc;
+  padding: 12px 15px;
+  text-align: center;
+  font-size: 16px;
+}
+
+#cart-table th {
+  background-color: #d9f0ff;
+  font-weight: 600;
+}
+
+/* Confirm Button */
+.confirm-btn {
+  display: block;
+  margin-left: auto; 
+  margin-top: 20px;
+  padding: 10px 30px;
+  background-color: #1aa84f;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 17px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.confirm-btn:hover {
+  background-color: #159542;
+}
+
+/* Remove button in cart table */
+#cart-table .remove-btn {
+  background-color: #c90003c8; /* Red background */
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 50%; /* Circular button */
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  padding: 0;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+#cart-table .remove-btn:hover {
+  background-color: #d9363e; /* Darker red on hover */
+  transform: scale(1.1); /* Slight zoom effect */
+}
+
+/* =========================
+   Delivery Info Section (Aligned & Complimentary & Centered)
+========================= */
+.delivery-info {
+  width: 95%; /* matches other sections */
+  max-width: 950px; /* same as container width to prevent overflow */
+  padding: 30px;
+  border-radius: 12px;
+  background-color: #80cfff; /* matches cart-section bg */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15); /* subtle shadow like cards */
+  font-family: "Poppins", sans-serif;
+  margin: 0 auto 30px auto; /* centers horizontally and adds bottom spacing */
+  box-sizing: border-box;
+}
+
+.delivery-info h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #004b80; /* darker shade to match tab active text */
+  text-align: left;
+  border-bottom: 2px solid #29a8e0; /* matches header highlight */
+  padding-bottom: 10px;
+  font-weight: 600;
+}
+
+.delivery-info label {
+  display: block;
+  margin-bottom: 18px;
+  font-weight: 500;
+  color: #003b5c; /* dark accent color for text */
+  font-size: 15px;
+}
+
+.delivery-info input[type="text"],
+.delivery-info textarea,
+.delivery-info select {
+  width: 100%;
+  padding: 10px 14px;
+  margin-top: 5px;
+  border: 1px solid #0077cc; /* subtle border matching product price color */
+  border-radius: 8px;
+  font-size: 15px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.delivery-info input[type="text"]:focus,
+.delivery-info textarea:focus,
+.delivery-info select:focus {
+  border-color: #1aa84f; /* focus color matches confirm button */
+  box-shadow: 0 0 6px rgba(26, 168, 79, 0.3);
+  outline: none;
+}
+
+.delivery-info textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.delivery-info select {
+  cursor: pointer;
+}
+
+/* =========================
+   Confirm Delivery Button
+========================= */
+.confirm-delivery-btn {
+  display: block;
+  margin-top: 20px;
+  padding: 12px 30px;
+  background-color: #1aa84f; /* same as confirm sale button */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 17px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+.confirm-delivery-btn:hover {
+  background-color: #159542; /* darker green on hover, same as sale button */
+}
+
+
+.cart-footer strong {
+  display: block;   /* allows margin */
+  margin-top: 0.9rem;
+}
